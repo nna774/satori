@@ -12,7 +12,7 @@ def move(filename, ext)
   if File.exist?(MOVETO + to)
     puts "target exist! retry!"
     sleep(1)
-    move(filename, ext)
+    return move(filename, ext)
   end
   if not File.exist?(filename)
     return nil # 1ファイルの追加で多重に呼ばれた時に何故か出る
