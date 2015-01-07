@@ -3,6 +3,7 @@ require "rb-inotify"
 require_relative "config.rb"
 
 def move(filename, ext)
+  sleep(10) # ダウンロード中に移動とか起きるとめんどくさそう
   puts "move called"
   namestr = `#{NAMECMD}`.chomp
   to = namestr + "." + ext
