@@ -3,12 +3,12 @@ require "rb-inotify"
 require_relative "config.rb"
 
 def move(filename, ext)
-  sleep(10) # ダウンロード中に移動とか起きるとめんどくさそう
   puts "move called"
   namestr = `#{NAMECMD}`.chomp
   to = namestr + "." + ext
   path = MOVETO + to
   puts "target to #{to}"
+  sleep(10) # ダウンロード中に移動とか起きるとめんどくさそう
   if File.exist?(MOVETO + to)
     puts "target exist! retry!"
     sleep(1)
