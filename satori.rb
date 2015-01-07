@@ -29,7 +29,9 @@ notifier.watch(WATCHPATH, :moved_to, :create) do |event|
     ext = $2
     ext = "jpg" if ext == "jpg-large"
     ext = "png" if ext == "png-large"
-    move(event.name, ext)
+    Thread.new do
+      move(event.name, ext)
+    end
   end
 end
 
