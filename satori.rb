@@ -14,7 +14,8 @@ def move(filename, ext)
     sleep(1)
     return move(filename, ext)
   end
-  if not File.exist?(filename)
+  if not File.exist?(WATCHPATH + filename)
+    puts "source lost!"
     return nil # 1ファイルの追加で多重に呼ばれた時に何故か出る
   end
   cmdstr = "#{MOVECMD} \"#{WATCHPATH + filename}\" \"#{path}\""
