@@ -22,10 +22,12 @@ notifier = INotify::Notifier.new
 
 notifier.watch(WATCHPATH, :moved_to, :create) do |event|
   puts "#{event.name} is now in image!"
-  if /^(.*)\.(png|gif|jpg|jpeg|JPG|bmp)$/ =~ event.name
+  if /^(.*)\.(png|gif|jpg|jpeg|jpg-large|JPG|bmp)$/ =~ event.name
     puts "move #{event.name} to #{MOVETO}"
     puts "extension is #{$2}"
-    move(event.name, $2)
+    ext = $2
+    ext = "jpg" if ext == "jpg-large"
+    move(event.name, ext)
   end
 end
 
