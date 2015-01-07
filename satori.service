@@ -1,0 +1,14 @@
+[Unit]
+Description=satori
+
+[Service]
+ExecStart=/bin/bash -c "cd /home/nona/codes/satori; /home/nona/.gem/ruby/2.2.0/bin/bundle exec ruby satori.rb"
+ExecReload=/bin/bash -c "cd /home/nona/codes/satori; /home/nona/.gem/ruby/2.2.0/bin/bundle exec ruby satori.rb"
+KillMode=control-group
+Restart=on-failure
+RestartSec=42s
+
+Type=simple
+
+[Install]
+WantedBy=default.target
